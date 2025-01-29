@@ -9,6 +9,8 @@ public interface AuthorRepository {
 
     List<Author> findAll();
 
+    List<Author> findAllByBookId(Integer bookId);
+
     Optional<Author> findById(Integer id);
 
     Optional<Author> findByName(String name);

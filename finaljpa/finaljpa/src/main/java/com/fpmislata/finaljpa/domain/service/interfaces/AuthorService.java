@@ -9,6 +9,8 @@ public interface AuthorService {
 
     List<Author> findAll();
 
+    List<Author> findAllByBookId(Integer bookId);
+
     Optional<Author> findById(Integer idAuthor);
 
     Optional<Author> findByName(String name);

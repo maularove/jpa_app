@@ -23,6 +23,11 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
+    public List<Author> findAllByBookId(Integer bookId) {
+        return authorRepository.findAllByBookId(bookId);
+    }
+
+    @Override
     public Optional<Author> findById(Integer idAuthor) {
         return authorRepository.findById(idAuthor);
     }
@@ -46,4 +51,5 @@ public class AuthorServiceImpl implements AuthorService {
     public void delete(Integer idAuthor) {
         authorRepository.delete(idAuthor);
     }
+
 }

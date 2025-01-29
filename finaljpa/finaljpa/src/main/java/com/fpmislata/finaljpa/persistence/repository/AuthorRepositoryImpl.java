@@ -24,6 +24,11 @@ public class AuthorRepositoryImpl implements AuthorRepository {
     }
 
     @Override
+    public List<Author> findAllByBookId(Integer bookId) {
+        return AuthorDaoMapper.INSTANCE.toAuthors(authorJpa.findAllByBookId(bookId));
+    }
+
+    @Override
     public Optional<Author> findById(Integer id) {
         return authorJpa.findById(id).map(a -> AuthorDaoMapper.INSTANCE.toAuthor(a));
     }
@@ -42,4 +47,5 @@ public class AuthorRepositoryImpl implements AuthorRepository {
     public void delete(Integer id) {
         authorJpa.deleteById(id);
     }
+
 }
