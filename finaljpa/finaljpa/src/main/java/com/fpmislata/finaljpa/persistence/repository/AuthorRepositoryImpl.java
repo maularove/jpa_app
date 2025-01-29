@@ -1,4 +1,4 @@
-package com.fpmislata.finaljpa.persistence.repository.impl;
+package com.fpmislata.finaljpa.persistence.repository;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,17 +25,21 @@ public class AuthorRepositoryImpl implements AuthorRepository {
 
     @Override
     public Optional<Author> findById(Integer id) {
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+        return authorJpa.findById(id).map(a -> AuthorDaoMapper.INSTANCE.toAuthor(a));
+    }
+
+    @Override
+    public Optional<Author> findByName(String name) {
+        return authorJpa.findByName(name).map(a -> AuthorDaoMapper.INSTANCE.toAuthor(a));
     }
 
     @Override
     public void save(Author author) {
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
+        authorJpa.save(AuthorDaoMapper.INSTANCE.toAuthorEntity(author));
     }
 
     @Override
     public void delete(Integer id) {
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+        authorJpa.deleteById(id);
     }
-
 }
